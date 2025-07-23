@@ -1,4 +1,4 @@
-Oasis Infobyte Web Development & Designing Internship
+### Oasis Infobyte Web Development & Designing Internship
 
 This repository contains all my internship tasks for the **Web Development & Designing** domain under Oasis Infobyte.
 
@@ -18,7 +18,7 @@ Created a simple landing page using HTML & CSS.
 **Outcome:**  
 A responsive landing page with navigation, hero section, and footer.
 
-
+---
 
 ### Task 2: Personal Portfolio Website
 **Objective:**  
