@@ -54,6 +54,12 @@ A functional converter with input fields and instant result display.
 - GitHub for version control and hosting
 
 ---
+## Live Links
+- [Task 1 Live](https://AA2610.github.io/OIBSIP/task1/)
+- [Task 2 Live](https://AA2610.github.io/OIBSIP/task2/)
+- [Task 3 Live](https://AA2610.github.io/OIBSIP/task3/)
+
+---
 
 ## Done by
 **Akshitha**  
