@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 400px;
+    }
+    label, select, input, button {
+      display: block;
+      margin: 10px 0;
+      font-size: 1rem;
+      width: 100%;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h2>Temperature Converter</h2>
+
+  <label for="tempInput">Enter Temperature:</label>
+  <input type="text" id="tempInput" placeholder="Type a number" />
+
+  <label for="unitSelect">Select Input Unit:</label>
+  <select id="unitSelect">
+    <option value="C">Celsius (°C)</option>
+    <option value="F">Fahrenheit (°F)</option>
+    <option value="K">Kelvin (K)</option>
+  </select>
+
+  <button id="convertBtn">Convert</button>
+
+  <div id="result"></div>
+
+  <script>
+    const tempInput = document.getElementById('tempInput');
+    const unitSelect = document.getElementById('unitSelect');
+    const convertBtn = document.getElementById('convertBtn');
+    const resultDiv = document.getElementById('result');
+
+    function isValidNumber(value) {
+      return !isNaN(value) && value.trim() !== '';
+    }
+
+    function convertTemperature(value, unit) {
+      let celsius, fahrenheit, kelvin;
+
+      switch(unit) {
+        case 'C':
+          celsius = value;
+          fahrenheit = (value * 9/5) + 32;
+          kelvin = value + 273.15;
+          break;
+        case 'F':
+          celsius = (value - 32) * 5/9;
+          fahrenheit = value;
+          kelvin = celsius + 273.15;
+          break;
+        case 'K':
+          celsius = value - 273.15;
+          fahrenheit = (celsius * 9/5) + 32;
+          kelvin = value;
+          break;
+      }
+
+      return {
+        C: celsius.toFixed(2) + ' °C',
+        F: fahrenheit.toFixed(2) + ' °F',
+        K: kelvin.toFixed(2) + ' K'
+      };
+    }
+
+    convertBtn.addEventListener('click', () => {
+      const inputValue = tempInput.value;
+      const inputUnit = unitSelect.value;
+
+      if (!isValidNumber(inputValue)) {
+        resultDiv.textContent = 'Please enter a valid number!';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      const tempValue = parseFloat(inputValue);
+      const converted = convertTemperature(tempValue, inputUnit);
+
+      // Display the converted temperatures excluding the input unit
+      let displayText = 'Converted Temperatures:\n';
+      for (const [unit, val] of Object.entries(converted)) {
+        if (unit !== inputUnit) {
+          displayText += `${val}\n`;
+        }
+      }
+
+      resultDiv.style.whiteSpace = 'pre-line';
+      resultDiv.style.color = 'black';
+      resultDiv.textContent = displayText;
+    });
+  </script>
+</body>
+</html>
